@@ -23,64 +23,56 @@ class ZCHomePage extends StatelessWidget {
   }
 }
 
-class ZCHomeContent extends StatelessWidget {
+/// Widget是不加下划线_ ：暴露给别人使用的
+class ZCHomeContent extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        ZCHomeProductItem("Apple1", "Macbook1", "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2196657174,1994863858&fm=26&gp=0.jpg"),
-        SizedBox(height: 5),
-        ZCHomeProductItem("Apple2", "Macbook2", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3368267992,623076164&fm=26&gp=0.jpg"),
-        SizedBox(height: 5),
-        ZCHomeProductItem("Apple3", "Macbook4", "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1422590462,2950091126&fm=26&gp=0.jpg"),
-      ],
-    );
-  }
+  _ZCHomeContentState createState() => _ZCHomeContentState();
 }
 
+/// 下划线开头的文件在其他库是不能访问的
+///
+/// 为什么Flutter在设计的时候StatefulWidget的build方法放在State中
+/// 1、build出来的Widget是需要依赖State中的变量（状态/数据）
+/// 2、在Flutter的运行过程中：
+/// Widget是不断的销毁和创建的，当我们自己的状态发生改变时，并不希望重新创建一个新的State
+///
+/// Widget Element RenderObject三者的关系
+/// Widget 是描述信息
+/// Element
+/// RenderObject
+///
+/// child 和 children的区别：
+/// child 中只能放一个元素
+/// children：放一个数组
+///
+class _ZCHomeContentState extends State<ZCHomeContent> {
 
-class ZCHomeProductItem extends StatelessWidget {
+  int _counter = 0;
 
-  final String title;
-  final String desc;
-  final String imageURL;
-
-  final textStyle1 = TextStyle(fontSize: 25, color: Colors.orange);
-  final textStyle2 = TextStyle(fontSize: 20, color: Colors.red);
-
-  /// 构造函数
-  ZCHomeProductItem(this.title, this.desc, this.imageURL);
 
   @override
   Widget build(BuildContext context) {
-
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 5, /// 设置边框的宽度
-          color: Colors.orange, /// 设置监控的颜色
-        ),
-      ) ,
+    return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,  /// 主轴
-        crossAxisAlignment: CrossAxisAlignment.start, /// 交叉轴
         children: <Widget>[
           Row(
             children: <Widget>[
-              Text(title, style: textStyle1),
+              RaisedButton(
+                child: Text("+"),
+                color: Colors.pink,
+                onPressed: () => print("点击+"),
+              ),
+              RaisedButton(
+                child: Text("-"),
+                color: Colors.purple,
+                onPressed: () => print("点击-"),
+              )
             ],
           ),
-          SizedBox(height: 8),
-          Text(desc, style: textStyle2),
-          SizedBox(height: 8),
-          Image.network(imageURL)
+          Text("当前计数：$_counter"),
         ],
       ),
     );
   }
 }
-
-
-
 
