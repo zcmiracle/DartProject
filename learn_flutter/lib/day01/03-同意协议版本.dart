@@ -37,9 +37,9 @@ class ZCHomeContentBody extends StatefulWidget {
 
 /// State去构建Widget
 class _ZCHomeContentBodyState extends State<ZCHomeContentBody> {
-  
+
   var flag = true;
-  
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -53,12 +53,12 @@ class _ZCHomeContentBodyState extends State<ZCHomeContentBody> {
                 setState(() {
                   flag = value;
                 });
-          }),
+              }),
           Text(
-              "同意和解协议",
-              style: TextStyle(
-                fontSize: 20,
-              ),)
+            "同意和解协议",
+            style: TextStyle(
+              fontSize: 20,
+            ),)
         ],
       ),
     );
