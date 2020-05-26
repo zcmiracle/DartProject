@@ -15,10 +15,10 @@ class ZCHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("首页商城",),
-      ),
-      body: ZCHomeContent()
+        appBar: AppBar(
+          title: Text("首页商城",),
+        ),
+        body: ZCHomeContent()
     );
   }
 }
@@ -53,8 +53,8 @@ class _ZCHomeContentState extends State<ZCHomeContent> {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
           _getButtons(),
           Text("当前计数：$_counter", style: TextStyle(fontSize: 25),),
         ],
