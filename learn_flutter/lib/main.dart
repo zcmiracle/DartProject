@@ -41,53 +41,25 @@ class _ZCHomeContentState extends State<ZCHomeContent> {
 
   @override
   Widget build(BuildContext context) {
-
-    /// 加载网络图片
-//    return Image.network(imageURL);
-//    return ImageNetworkDemo(imageURL: imageURL);
-
-    /// 加载本地图片
-    /// 1、在Flutter项目中创建一个文件夹，存储图片
-    /// 2、在pubspec.yaml进行配置
-    /// 3、使用图片
-    return Image(
-      image: AssetImage(""),
-    );
-
-  }
-}
-
-/// 加载网络图片
-class ImageNetworkDemo extends StatelessWidget {
-
-  const ImageNetworkDemo({
-    Key key,
-    @required this.imageURL,
-  }) : super(key: key);
-
-  final String imageURL;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image(
-      image: NetworkImage(imageURL),
-      width: 200,
-      height: 200,
-      /// 宽度一定，高度自适应 fitWidth
-      /// 高度一定，宽度自适应 fitHeight
-      fit: BoxFit.cover,
-      /// 设置位置
-//      alignment: Alignment.bottomCenter,
-      /// 范围（-1 1）
-      alignment: Alignment(-1, -5),
-      ///
-      color: Colors.red,
-      /// 混入模式
-      colorBlendMode: BlendMode.colorDodge,
-      ///
-      repeat: ImageRepeat.repeatY,
+    /// 1、默认情况下Button上下有一定间距
+    /// 2、Button变小：
+    return Column(
+      children: <Widget>[
+        FlatButton(
+          child: Text("Flat Button"),
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          color: Colors.red,
+          textColor: Colors.white,
+          onPressed: () {},
+        ),
+        FlatButton(
+          child: Text("Flat Button"),
+          materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          color: Colors.red,
+          textColor: Colors.white,
+          onPressed: () {},
+        )
+      ],
     );
   }
 }
-
-
