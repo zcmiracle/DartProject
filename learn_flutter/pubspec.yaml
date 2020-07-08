@@ -44,6 +44,8 @@ flutter:
   assets:
     - assets/images/test.png
     - assets/images/girl.jpeg
+    - assets/images/home/
+    - assets/images/tabbar/
 
 #    - images/a_dot_ham.jpeg
 
