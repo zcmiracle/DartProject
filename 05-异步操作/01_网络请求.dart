@@ -14,6 +14,8 @@ main(List<String> args) {
       print(value);
   }).catchError((error){
     print("执行catchError代码：$error");
+  }).whenComplete((){
+    print("代码执行完成");
   });
 
   print("main end");
