@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 
 class ZCHomeContent extends StatefulWidget {
   @override
@@ -14,10 +15,21 @@ class _ZCHomeContentState extends State<ZCHomeContent> {
     super.initState();
 
     /// 发送网络请求
+    /// 1、创建Dio对象
+    final dio = Dio();
+
+    /// 2、发送网络请求
+    dio.get("https://httpbin.org/get").then((res) {
+      print(res);
+    });
+
+    dio.post("https://httpbin.org/post").then((res) {
+      print(res);
+
+    });
 
   }
-
-
+  
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
