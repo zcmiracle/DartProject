@@ -17,6 +17,6 @@ class HomeConfig {
   // apiKey
   static const String apiKey = "0df993c66c0c636e29ecbb5344252a4a";
   // 电影数目
-  static const int movieCount = 10;
+  static const int movieCount = 20;
 
 }
