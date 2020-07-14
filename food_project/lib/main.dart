@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_project/core/viewmodel/meal_view_model.dart';
 import 'package:food_project/ui/shared/app_theme.dart';
+import 'package:provider/provider.dart';
 import 'core/router/route.dart';
 import 'ui/shared/size_fit.dart';
 import 'core/service/meal_request.dart';
@@ -8,13 +10,12 @@ import 'core/service/meal_request.dart';
 /// https://app.quicktype.io
 
 void main() {
-
-  // 测试发送网络请求
-  ZCMealRequest.getMealData().then((res) {
-    print(res);
-  });
-
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (ctx) => ZCMealViewModel(),
+      child: MyApp(),
+    )
+  );
 }
 
 class MyApp extends StatelessWidget {

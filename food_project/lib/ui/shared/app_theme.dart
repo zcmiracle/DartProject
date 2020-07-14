@@ -28,7 +28,7 @@ class ZCAppTheme {
   static final ThemeData darkTheme = ThemeData(
     primarySwatch: Colors.grey,
     textTheme: TextTheme(
-      bodyText1: TextStyle(fontSize: normalFontSize, color: darkTextColors)
+      body1: TextStyle(fontSize: normalFontSize, color: darkTextColors)
     )
   );
 
