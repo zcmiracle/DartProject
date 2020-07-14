@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_content.dart';
 
 class ZCHomeScreen extends StatelessWidget {
   @override
@@ -7,9 +8,7 @@ class ZCHomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("美食广场"),
       ),
-      body: Center(
-        child: Text("美食广场"),
-      ),
+      body: ZCHomeContent(),
     );
   }
 }

@@ -22,6 +22,8 @@ class _ZCMainScreenState extends State<ZCMainScreen> {
         currentIndex: _currentIndex,
         selectedFontSize: 14,
         unselectedFontSize: 14,
+        // 超过四个要写
+        type: BottomNavigationBarType.fixed,
         items: items,
         onTap: (index) {
           setState(() {

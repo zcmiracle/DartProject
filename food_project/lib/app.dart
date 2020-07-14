@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:food_project/ui/shared/app_theme.dart';
 import 'core/router/route.dart';
 
+// xcode11.4 创建项目会出现问题
+// https://flutter.dev/docs/development/ios-project-migration
+
 // 可以抽取到这个文件里面
 class MyApp extends StatelessWidget {
   @override

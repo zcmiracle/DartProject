@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -19,16 +19,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="750x1334.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Pm-II-MH0">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="YRO-k0-Ey4" secondAttribute="bottom" id="05c-qi-7Bo"/>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="0yD-b1-OHR"/>
-                            <constraint firstAttribute="trailing" secondItem="YRO-k0-Ey4" secondAttribute="trailing" id="6vF-8B-cxV"/>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wkw-fR-Ffe"/>
+                            <constraint firstAttribute="trailing" secondItem="5Pm-II-MH0" secondAttribute="trailing" id="9jo-E6-dzj"/>
+                            <constraint firstItem="5Pm-II-MH0" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="JdW-O7-BXo"/>
+                            <constraint firstItem="5Pm-II-MH0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dQs-n1-yUl"/>
+                            <constraint firstAttribute="bottom" secondItem="5Pm-II-MH0" secondAttribute="bottom" id="y9K-Cq-03K"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="375" height="667"/>
+        <image name="750x1334.png" width="750" height="1334"/>
     </resources>
 </document>
