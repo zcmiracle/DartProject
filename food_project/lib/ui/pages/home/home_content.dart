@@ -15,7 +15,7 @@ class ZCHomeContent extends StatelessWidget {
         // 没有数据 加载菊花
         if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
         // 请求错误
-        if (snapshot.error == true) return Center(child: Text("请求失败"));
+        if (snapshot.error != null) return Center(child: Text("请求失败"));
 
         final categories = snapshot.data; // 局部变量 不需要下划线 _
         return GridView.builder(
