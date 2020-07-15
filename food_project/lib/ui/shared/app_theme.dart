@@ -5,20 +5,24 @@ class ZCAppTheme {
   static const double smallFontSize = 16;
   static const double normalFontSize = 22;
   static const double largeFontSize = 24;
+  static const double xlargeFontSize = 30;
 
   // 2、普通模式
   static final Color normalTextColors = Colors.red;
 
   static final ThemeData normalTheme = ThemeData(
     primarySwatch: Colors.pink,
-    // 设置整个应用程序的背景颜色
+    accentColor: Colors.amber,
+
+      // 设置整个应用程序的背景颜色
     canvasColor: Color.fromRGBO(255, 254, 222, 1),
     textTheme: TextTheme(
       body1: TextStyle(fontSize: normalFontSize),
       display1: TextStyle(fontSize: smallFontSize, color: Colors.black87,),
       display2: TextStyle(fontSize: normalFontSize, color: Colors.black87),
       display3: TextStyle(fontSize: largeFontSize, color: Colors.black87),
-    )
+      display4: TextStyle(fontSize: xlargeFontSize, color: Colors.black87, fontWeight: FontWeight.w400),
+    ),
   );
 
 
