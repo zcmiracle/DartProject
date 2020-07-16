@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_project/core/extension/int_extension.dart';
+import '../filter/filter.dart';
 
 class ZCHomeDrawer extends StatelessWidget {
   @override
@@ -11,10 +12,10 @@ class ZCHomeDrawer extends StatelessWidget {
           children: <Widget>[
             buildHeaderView(context),
             buildListTile(context, Icon(Icons.restaurant), "进餐", () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(); /// 弹框消失
             }),
             buildListTile(context, Icon(Icons.settings), "过滤", (){
-              Navigator.of(context).pop(); // 弹框消失
+              Navigator.of(context).pushNamed(ZCFilterScreen.routeName);
             }),
           ],
         ),

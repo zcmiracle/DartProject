@@ -1,25 +1,16 @@
-import 'package:flutter/material.dart';
 import '../model/meal_model.dart';
+import 'base_view_model.dart';
 
-class ZCFavorViewModel extends ChangeNotifier {
-  List<ZCMealModel> _favorMeals = [];
-
-  List<ZCMealModel> get favorMeals {
-    return _favorMeals;
-  }
+class ZCFavorViewModel extends BaseMealViewModel {
 
   void addMeal(ZCMealModel meal) {
-    _favorMeals.add(meal);
+    originMeals.add(meal);
     notifyListeners();
   }
 
   void removeMeal(ZCMealModel meal) {
-    _favorMeals.remove(meal);
+    originMeals.remove(meal);
     notifyListeners();
-  }
-
-  bool isFavor(ZCMealModel meal) {
-    return _favorMeals.contains(meal);
   }
 
   void handleMeal(ZCMealModel meal) {
@@ -30,4 +21,7 @@ class ZCFavorViewModel extends ChangeNotifier {
     }
   }
 
+  bool isFavor(ZCMealModel meal) {
+    return originMeals.contains(meal);
+  }
 }

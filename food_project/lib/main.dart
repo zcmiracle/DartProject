@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_project/core/viewmodel/meal_view_model.dart';
 import 'package:food_project/core/viewmodel/favor_view_model.dart';
+import 'package:food_project/core/viewmodel/filter_view_model.dart';
+
 import 'package:food_project/ui/shared/app_theme.dart';
 import 'package:provider/provider.dart';
 import 'core/router/route.dart';
@@ -14,8 +16,21 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (ctx) => ZCMealViewModel()),
-        ChangeNotifierProvider(create: (ctx) => ZCFavorViewModel()),
+        ChangeNotifierProvider(create: (ctx) => ZCFilterViewModel()),
+        ChangeNotifierProxyProvider<ZCFilterViewModel, ZCMealViewModel>(
+          create: (ctx) => ZCMealViewModel(),
+          update: (ctx, filterVM, mealVM) {
+            mealVM.updateFilters(filterVM);
+            return mealVM;
+          },
+        ),
+        ChangeNotifierProxyProvider<ZCFilterViewModel, ZCFavorViewModel>(
+          create: (ctx) => ZCFavorViewModel(),
+          update: (ctx, filterVM, favorVM) {
+            favorVM.updateFilters(filterVM);
+            return favorVM;
+          },
+        ),
       ],
       child: MyApp(),
     ),

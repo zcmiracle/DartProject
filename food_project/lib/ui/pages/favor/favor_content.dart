@@ -8,17 +8,16 @@ class ZCFavorContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ZCFavorViewModel>(
       builder: (ctx, favorVM, child) {
-
-        if (favorVM.favorMeals.length == 0) {
+        if (favorVM.meals.length == 0) {
           return Center(
             child: Text("未收藏美食"),
           );
         }
 
         return ListView.builder(
-          itemCount: favorVM.favorMeals.length,
+          itemCount: favorVM.meals.length,
           itemBuilder: (itemContext, index) {
-            return ZCMealItem(favorVM.favorMeals[index]);
+            return ZCMealItem(favorVM.meals[index]);
           },
         );
       },

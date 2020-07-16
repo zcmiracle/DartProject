@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'initialize_items.dart';
+import '../home/home_drawer.dart';
 
 class ZCMainScreen extends StatefulWidget {
 
@@ -18,6 +19,7 @@ class _ZCMainScreenState extends State<ZCMainScreen> {
         index: _currentIndex,
         children: pages,
       ),
+      drawer: ZCHomeDrawer(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         selectedFontSize: 14,
