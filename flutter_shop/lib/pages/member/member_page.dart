@@ -8,6 +8,9 @@ class MemberPage extends StatefulWidget {
 class _MemberPageState extends State<MemberPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: Text("会员中心"),),
+      body: Center(),
+    );
   }
 }

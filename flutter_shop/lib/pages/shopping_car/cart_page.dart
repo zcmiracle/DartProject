@@ -8,6 +8,9 @@ class ShoppingCarPage extends StatefulWidget {
 class _ShoppingCarPageState extends State<ShoppingCarPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: Text("购物车"),),
+      body: Center(),
+    );
   }
 }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_shop/config/app_theme.dart';
+import 'package:flutter_shop/routers/routers.dart';
 import 'config/index.dart';
 import 'provide/current_index_provide.dart';
 import 'package:provider/provider.dart';
-import 'pages/index_page.dart';
+
+import 'pages/main/main.dart';
 
 void main() {
   runApp(
@@ -10,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => CurrentIndexProvide()),
       ],
+      child: MyApp(),
     )
   );
 }
@@ -17,13 +21,15 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: ZCString.mainTitle, // Flutter女装商城
-      theme: ThemeData(
-        primaryColor: ZCColor.primaryColor,
-      ),
-      home: IndexPage(),
+      theme: ZCAppTheme.norTheme,
+      initialRoute: ZCRouter.initialRouter,
+      routes: ZCRouter.routes,
+      onGenerateRoute: ZCRouter.generateRoute,
+      onUnknownRoute: ZCRouter.unknownRoute,
     );
   }
 }
