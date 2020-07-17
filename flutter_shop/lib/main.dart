@@ -11,7 +11,7 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CurrentIndexProvide()),
-        ChangeNotifierProvider(create: (context) => CategoryProvide()),
+        ChangeNotifierProvider(create: (context) => CategoryProvider()),
       ],
       child: MyApp(),
     )
