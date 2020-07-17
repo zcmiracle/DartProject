@@ -4,14 +4,14 @@ import 'package:flutter_shop/routers/routers.dart';
 import 'config/index.dart';
 import 'provide/current_index_provide.dart';
 import 'package:provider/provider.dart';
-
-import 'pages/main/main.dart';
+import 'provide/category_provide.dart';
 
 void main() {
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => CurrentIndexProvide()),
+        ChangeNotifierProvider(create: (context) => CategoryProvide()),
       ],
       child: MyApp(),
     )
@@ -21,6 +21,8 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    ZCSizeFit.initialize();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
