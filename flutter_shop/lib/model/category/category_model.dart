@@ -28,7 +28,6 @@ class CategoryModel {
   }
 }
 
-
 class Data {
   String firstCategoryId;
   String firstCategoryName;

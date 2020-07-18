@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     ZCSizeFit.initialize();
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: ZCString.mainTitle, // Flutter女装商城

@@ -30,6 +30,8 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
     return Consumer<CategoryProvider>(
       builder: (BuildContext context, CategoryProvider categoryProvider, Widget child) {
         listIndex = categoryProvider.firstCategoryIndex;
+//        print("您点击了${listIndex}");
+
         return Container(
           width: ScreenUtil().setWidth(180),
           decoration: BoxDecoration(
@@ -40,7 +42,6 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
           child: ListView.builder(
             itemCount: list.length,
             itemBuilder: (context, index) {
-              print('======${index}');
               return _buildLeftInkWell(index);
             },
           ),
@@ -49,14 +50,21 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
     );
   }
 
-
   Widget _buildLeftInkWell(int index) {
     bool isClick = false;
     isClick = (index == listIndex) ? true : false;
     return InkWell(
       onTap: () {
-
+        var secondCategoryList = list[index].secondCategoryVO;
+        var firstCategoryId = list[index].firstCategoryId;
+        
+        Provider.of<CategoryProvider>(context, listen: false).changeFirstCategory
+          (firstCategoryId, index);
+        Provider.of<CategoryProvider>(context, listen: false).getSecondCategory(secondCategoryList, firstCategoryId);
+        /// 获取商品列表
+        _getGoodsList(context, firstCategoryId: firstCategoryId);
       },
+
       child: Container(
         height: ScreenUtil().setWidth(90),
         padding: EdgeInsets.only(left: 10, top: 10),
@@ -94,8 +102,25 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
        * 如果你提供了多个状态，可以使用MultiProvider。
        */
 //      Provider.of<CategoryProvider>(context).getSecondCategory(list[0].secondCategoryVO, '4');
-      Provider.of<CategoryProvider>(context, listen: false);
-
+      Provider.of<CategoryProvider>(context, listen: false).getSecondCategory
+        (list[0].secondCategoryVO, '4');
     });
   }
+
+  /// 获取商品列表
+  _getGoodsList(context, {String firstCategoryId}) {
+    var data = {
+      'firstCategoryId': firstCategoryId == null ? Provider
+          .of<CategoryProvider>(context, listen: false).firstCategoryId :
+      firstCategoryId,
+      'secondCategoryId': Provider.of<CategoryProvider>(context, listen:
+      false).secondCategoryId,
+      'page': 1
+    };
+    request('getCategoryGoods', formData: data).then((res) {
+      var data = json.decode(res.toString());
+      print("firstCategoryId:::${data.toString()}");
+    });
+  }
+
 }
