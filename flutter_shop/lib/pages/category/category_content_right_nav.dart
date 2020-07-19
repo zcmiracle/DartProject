@@ -6,6 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/index.dart';
 import '../../service/http_service.dart';
 import 'dart:convert';
+import '../../provide/category_goods_list_provide.dart';
+import '../../model/category/category_goods_list_model.dart';
 
 class CategoryContentRightNav extends StatefulWidget {
   @override
@@ -65,18 +67,28 @@ class _CategoryContentRightNavState extends State<CategoryContentRightNav> {
     );
   }
 
-  ///
+  /// 获取商品列表
   _getGoodsList(context, {String secondCategoryId}) {
+
     var data = {
       'firstCategoryId': Provider.of<CategoryProvider>(context, listen:
       false).firstCategoryId,
-      'secondCategoryId': Provider.of<CategoryProvider>(context, listen: 
-      false).secondCategoryId,
+      'secondCategoryId': secondCategoryId,
       'page': 1
     };
+
     request('getCategoryGoods', formData: data).then((res) {
       var data = json.decode(res.toString());
-      print("secondCategoryId:::${data.toString()}");
+//      print("secondCategoryId:::${data.toString()}");
+      // json转model
+      CategoryGoodsListModel goodsListM = CategoryGoodsListModel.fromJson(data);
+      if (goodsListM.data == null) {
+        Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList([]);
+      } else {
+        // 监听provide刷新
+        Provider.of<CategoryGoodsListProvider>(context, listen: false)
+            .getGoodsList(goodsListM.data);
+      }
     });
   }
 

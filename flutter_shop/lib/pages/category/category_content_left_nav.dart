@@ -6,6 +6,8 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 import '../../provide/category_provide.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../provide/category_goods_list_provide.dart';
+import '../../model/category/category_goods_list_model.dart';
 
 class CategoryContentLeftNav extends StatefulWidget {
   @override
@@ -119,7 +121,17 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
     };
     request('getCategoryGoods', formData: data).then((res) {
       var data = json.decode(res.toString());
-      print("firstCategoryId:::${data.toString()}");
+//      print("firstCategoryId:::${data.toStrin g()}");
+      // json转model
+      CategoryGoodsListModel goodsListM = CategoryGoodsListModel.fromJson(data);
+      if (goodsListM.data == null) {
+        Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList([]);
+      } else {
+        // 监听provide刷新
+        Provider.of<CategoryGoodsListProvider>(context, listen: false)
+            .getGoodsList(goodsListM.data);
+      }
+
     });
   }
 

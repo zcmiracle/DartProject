@@ -5,6 +5,7 @@ import 'config/index.dart';
 import 'provide/current_index_provide.dart';
 import 'package:provider/provider.dart';
 import 'provide/category_provide.dart';
+import 'provide/category_goods_list_provide.dart';
 
 void main() {
   runApp(
@@ -12,6 +13,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (context) => CurrentIndexProvide()),
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
+        ChangeNotifierProvider(create: (context) => CategoryGoodsListProvider()),
       ],
       child: MyApp(),
     )
@@ -34,7 +36,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 
 /**
  * Provide借助了InheritWidget，将共享状态放到顶层MaterialApp之上。底层部件通过Provier获取该状态
