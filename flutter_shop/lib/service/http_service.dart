@@ -4,10 +4,13 @@ import 'dart:io';
 import '../config/index.dart';
 
 Future request(url, {formData}) async {
+
   try {
     Response response;
     Dio dio = Dio();
-    dio.options.contentType = ContentType.parse('application/x-www-form-urlencodeed').toString();
+
+    // application/x-www-form-urlencoded 这个写错了 我擦
+    dio.options.contentType = ContentType.parse('application/x-www-form-urlencoded').toString();
     if (formData == null) {
       response = await dio.post(servicePath[url]);
     } else {

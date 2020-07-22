@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/index.dart';
 import 'home_content_hot_good_item.dart';
-
+import '../../routers/application.dart';
 
 /// 火爆专区
 class HomeContentHotGood extends StatelessWidget {
@@ -17,20 +17,20 @@ class HomeContentHotGood extends StatelessWidget {
       child: Column(
         children: <Widget>[
           hotTitle, // 火爆专区标题
-          _wrapList(), // 火爆专区列表
+          _wrapList(context), // 火爆专区列表
         ],
       ),
     );
   }
 
   /// 火爆专区列表
-  Widget _wrapList() {
+  Widget _wrapList(BuildContext context) {
     if (hotGoodsLists.length != 0) {
       List<Widget> listWidget = hotGoodsLists.map((value) {
         return InkWell(
           child: HomeContentHotGoodItem(hotGood: value,),
           onTap: () {
-
+            Application.router.navigateTo(context, "detail?id=${value['goodsId']}");
           },
         );
       }).toList();

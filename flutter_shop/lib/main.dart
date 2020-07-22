@@ -6,6 +6,11 @@ import 'provide/current_index_provide.dart';
 import 'package:provider/provider.dart';
 import 'provide/category_provide.dart';
 import 'provide/category_goods_list_provide.dart';
+import 'provide/detail_info_provide.dart';
+
+import 'package:flutter_shop/routers/routes.dart';
+import 'package:fluro/fluro.dart';
+import 'package:flutter_shop/routers/application.dart';
 
 void main() {
   runApp(
@@ -14,6 +19,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => CurrentIndexProvide()),
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
         ChangeNotifierProvider(create: (context) => CategoryGoodsListProvider()),
+        ChangeNotifierProvider(create: (context) => DetailsInfoProvide()),
       ],
       child: MyApp(),
     )
@@ -24,6 +30,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    /// 腾讯课堂
+    final router = Router();
+    Routes.configureRoutes(router);
+    Application.router = router;
+
     ZCSizeFit.initialize();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -31,8 +42,9 @@ class MyApp extends StatelessWidget {
       theme: ZCAppTheme.norTheme,
       initialRoute: ZCRouter.initialRouter,
       routes: ZCRouter.routes,
-      onGenerateRoute: ZCRouter.generateRoute,
-      onUnknownRoute: ZCRouter.unknownRoute,
+//      onGenerateRoute: ZCRouter.generateRoute,
+//      onUnknownRoute: ZCRouter.unknownRoute,
+      onGenerateRoute: Application.router.generator,
     );
   }
 }

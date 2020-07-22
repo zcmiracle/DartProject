@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../routers/application.dart';
 
 /// 商品推荐下层
 class HomeContentRecommendFloor extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomeContentRecommendFloor extends StatelessWidget {
 
   void jumpShopDetail(context, goodId) {
     /// 跳转到商品详情
-
+    Application.router.navigateTo(context, "detail?id=${goodId}");
   }
 
   @override
@@ -78,6 +79,7 @@ class HomeContentRecommendFloor extends StatelessWidget {
     return InkWell(
       child: Image.network(imageName, fit: BoxFit.cover,),
       onTap: () {
+        print("0-----${goodId}");
         jumpShopDetail(context, goodId);
       },
     );

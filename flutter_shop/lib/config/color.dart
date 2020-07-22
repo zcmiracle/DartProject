@@ -13,7 +13,12 @@ class ZCColor {
   // 最新价格
   static const Color presentPriceTextColor = Color.fromRGBO(182, 9, 9, 1.0);
   // 原来价格
-  static const Color originPriceTextColor = Colors.black12;
+  static const Color originPriceTextColor = Colors.black26;
+  // 商品详情编号
+  static const Color detailGoodsIdColor = Colors.black26;
+
+  // 默认文本颜色
+  static const Color detailTextColor = Color.fromRGBO(132, 95, 63, 1.0);
 
 
 }

@@ -61,18 +61,12 @@ class HomeContentNavigator extends StatelessWidget {
       var data = json.decode(res.toString());
       CategoryModel category = CategoryModel.fromJson(data);
       List list = category.data;
-
-      Provider.of<CategoryProvider>(context, listen: false).changeFirstCategory
-        (categoryId, index);
-      Provider.of<CategoryProvider>(context, listen: false).getSecondCategory
-        (list[index].secondCategoryVO, categoryId);
+      Provider.of<CategoryProvider>(context, listen: false).changeFirstCategory(categoryId, index);
+      Provider.of<CategoryProvider>(context, listen: false).getSecondCategory(list[index].secondCategoryVO, categoryId);
+      // 跳转到分类
       Provider.of<CurrentIndexProvide>(context, listen: false).changeIndex(1);
-
-      /// 获取商品列表
 
     });
   }
-
-
 
 }

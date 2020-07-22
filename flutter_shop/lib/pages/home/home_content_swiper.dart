@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/index.dart';
+import '../../routers/application.dart';
 
 class HomeContentSwiper extends StatelessWidget {
 
@@ -21,11 +22,13 @@ class HomeContentSwiper extends StatelessWidget {
         pagination: SwiperPagination(),
         itemCount: dataLists.length,
         itemBuilder: (BuildContext context, int index) {
-          /// 点击有响应
           return InkWell(
-            child: Image.network("${dataLists[index]["image"]}", fit: BoxFit.cover,),
+            child: Image.network(
+              "${dataLists[index]["image"]}",
+              fit: BoxFit.cover,
+            ),
             onTap: () {
-
+              Application.router.navigateTo(context, "/detail?id=${dataLists[index]['goodsId']}");
             },
           );
         },

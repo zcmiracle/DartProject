@@ -59,8 +59,7 @@ class _CategoryContentRightNavState extends State<CategoryContentRightNav> {
       ),
       /// 点击商品列表
       onTap: () {
-        Provider.of<CategoryProvider>(context, listen: false)
-            .changeSecondIndex(index, item.secondCategoryId);
+        Provider.of<CategoryProvider>(context, listen: false).changeSecondIndex(index, item.secondCategoryId);
         /// 获取商品列表
         _getGoodsList(context, secondCategoryId: item.secondCategoryId);
       },
@@ -69,25 +68,19 @@ class _CategoryContentRightNavState extends State<CategoryContentRightNav> {
 
   /// 获取商品列表
   _getGoodsList(context, {String secondCategoryId}) {
-
     var data = {
-      'firstCategoryId': Provider.of<CategoryProvider>(context, listen:
-      false).firstCategoryId,
+      'firstCategoryId': Provider.of<CategoryProvider>(context, listen: false).firstCategoryId,
       'secondCategoryId': secondCategoryId,
       'page': 1
     };
-
     request('getCategoryGoods', formData: data).then((res) {
       var data = json.decode(res.toString());
-//      print("secondCategoryId:::${data.toString()}");
-      // json转model
-      CategoryGoodsListModel goodsListM = CategoryGoodsListModel.fromJson(data);
-      if (goodsListM.data == null) {
+      print("00000secondCategoryId:::${data.toString()}");
+      CategoryGoodsListModel goodsList = CategoryGoodsListModel.fromJson(data);
+      if (goodsList.data == null) {
         Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList([]);
       } else {
-        // 监听provide刷新
-        Provider.of<CategoryGoodsListProvider>(context, listen: false)
-            .getGoodsList(goodsListM.data);
+        Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList(goodsList.data);
       }
     });
   }

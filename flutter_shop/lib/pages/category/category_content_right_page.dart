@@ -1,20 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-
-import '../../provide/category_goods_list_provide.dart';
-import '../../provide/category_provide.dart';
-import '../../model/category/category_goods_list_model.dart';
-import '../../model/category/category_model.dart';
-import '../../config/index.dart';
-import '../../service/http_service.dart';
 import 'dart:convert';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-//import 'package:FlutterToast_example/toast_context.dart';
-//import 'package:FlutterToast_example/toast_no_context.dart';
-
+import '../../provide/category_goods_list_provide.dart';
+import '../../provide/category_provide.dart';
+import '../../model/category/category_goods_list_model.dart';
+import '../../config/index.dart';
+import '../../service/http_service.dart';
+import '../../routers/application.dart';
 
 class CategoryContentRightPage extends StatefulWidget {
   @override
@@ -81,9 +76,7 @@ class _CategoryContentRightPageState extends State<CategoryContentRightPage> {
             ),
           );
         } else {
-          print("暂时没有数据");
           return Text("暂时没有数据");
-//          return Container();
         }
       },
     );
@@ -106,12 +99,10 @@ class _CategoryContentRightPageState extends State<CategoryContentRightPage> {
       // json转model
       CategoryGoodsListModel goodsListM = CategoryGoodsListModel.fromJson(data);
       if (goodsListM.data == null) {
-        print("00000000000000");
         Provider.of<CategoryProvider>(context, listen: false).chageNoMore("没有更多了");
       } else {
         // 监听provide刷新
-        Provider.of<CategoryGoodsListProvider>(context, listen: false)
-            .addGoodsList(goodsListM.data);
+        Provider.of<CategoryGoodsListProvider>(context, listen: false).addGoodsList(goodsListM.data);
       }
     });
   }
@@ -141,7 +132,7 @@ class _CategoryContentRightPageState extends State<CategoryContentRightPage> {
       ),
       onTap: () {
         /// 跳转到商品详情页面
-
+        Application.router.navigateTo(context, "detail?id=${lists[index].goodsId}");
       },
     );
   }
@@ -172,7 +163,7 @@ class _CategoryContentRightPageState extends State<CategoryContentRightPage> {
   Widget _goodsPrice(List lists, int index) {
     return Container(
       width: ScreenUtil().setWidth(370),
-      margin: EdgeInsets.only(top: 20),
+      margin: EdgeInsets.only(top: 20.0),
       padding: EdgeInsets.all(5),
       child: Row(
         children: <Widget>[
@@ -182,7 +173,7 @@ class _CategoryContentRightPageState extends State<CategoryContentRightPage> {
           ),
           Text(
             "￥:${lists[index].oriPrice}",
-            style: ZCFont.oriPriceStyle,
+            style: TextStyle(color: Colors.black26, fontSize: 13.0),
           ),
         ],
       ),

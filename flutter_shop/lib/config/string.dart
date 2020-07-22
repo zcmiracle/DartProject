@@ -11,4 +11,12 @@ class ZCString {
   static const String recommendText = "商品推荐";
   static const String hotGoodsTitle = "火爆专区";
 
+  static const String detailPagesTitle = "商品详情页";
+  static const String onLoadingTitle = "正在加载中...";
+
+  static const String detailsPageExplain = "说明: > 急速送达 > 正品保证";
+  static const String addToShoppingCar = "加入购物车";
+  static const String buyGoodsText = "马上购买";
+
+
 }

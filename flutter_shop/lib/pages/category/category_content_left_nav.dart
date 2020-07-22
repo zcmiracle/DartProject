@@ -8,6 +8,7 @@ import '../../provide/category_provide.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../provide/category_goods_list_provide.dart';
 import '../../model/category/category_goods_list_model.dart';
+import '../../provide/current_index_provide.dart';
 
 class CategoryContentLeftNav extends StatefulWidget {
   @override
@@ -59,9 +60,7 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
       onTap: () {
         var secondCategoryList = list[index].secondCategoryVO;
         var firstCategoryId = list[index].firstCategoryId;
-        
-        Provider.of<CategoryProvider>(context, listen: false).changeFirstCategory
-          (firstCategoryId, index);
+        Provider.of<CategoryProvider>(context, listen: false).changeFirstCategory(firstCategoryId, index);
         Provider.of<CategoryProvider>(context, listen: false).getSecondCategory(secondCategoryList, firstCategoryId);
         /// 获取商品列表
         _getGoodsList(context, firstCategoryId: firstCategoryId);
@@ -93,7 +92,7 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
     await request('getCategory', formData: null).then((res) {
       var data = json.decode(res.toString());
       CategoryModel categoryModel = CategoryModel.fromJson(data);
-      print(categoryModel);
+
       setState(() {
         list = categoryModel.data;
       });
@@ -103,14 +102,14 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
        * 我们只需要将数据在其 value 属性中声明即可。
        * 如果你提供了多个状态，可以使用MultiProvider。
        */
-//      Provider.of<CategoryProvider>(context).getSecondCategory(list[0].secondCategoryVO, '4');
-      Provider.of<CategoryProvider>(context, listen: false).getSecondCategory
-        (list[0].secondCategoryVO, '4');
+      Provider.of<CategoryProvider>(context, listen: false).getSecondCategory(list[0].secondCategoryVO, '4');
     });
   }
 
   /// 获取商品列表
   _getGoodsList(context, {String firstCategoryId}) {
+
+    /// 请求参数
     var data = {
       'firstCategoryId': firstCategoryId == null ? Provider
           .of<CategoryProvider>(context, listen: false).firstCategoryId :
@@ -119,18 +118,19 @@ class _CategoryContentLeftNavState extends State<CategoryContentLeftNav> {
       false).secondCategoryId,
       'page': 1
     };
+
     request('getCategoryGoods', formData: data).then((res) {
       var data = json.decode(res.toString());
-//      print("firstCategoryId:::${data.toStrin g()}");
-      // json转model
-      CategoryGoodsListModel goodsListM = CategoryGoodsListModel.fromJson(data);
-      if (goodsListM.data == null) {
-        Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList([]);
-      } else {
-        // 监听provide刷新
-        Provider.of<CategoryGoodsListProvider>(context, listen: false)
-            .getGoodsList(goodsListM.data);
-      }
+      CategoryGoodsListModel goodsListM = CategoryGoodsListModel.fromJson(data); /// json转model
+      Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList(goodsListM.data);
+
+//      if (goodsListM.data == null) {
+//        Provider.of<CategoryGoodsListProvider>(context, listen: false).getGoodsList([]);
+//      } else {
+//        // 监听provide刷新
+//        Provider.of<CategoryGoodsListProvider>(context, listen: false)
+//            .getGoodsList(goodsListM.data);
+//      }
 
     });
   }
