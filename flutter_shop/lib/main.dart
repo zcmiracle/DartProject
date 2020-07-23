@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'provide/category_provide.dart';
 import 'provide/category_goods_list_provide.dart';
 import 'provide/detail_info_provide.dart';
+import 'provide/cart_provide.dart';
 
 import 'package:flutter_shop/routers/routes.dart';
 import 'package:fluro/fluro.dart';
@@ -20,6 +21,7 @@ void main() {
         ChangeNotifierProvider(create: (context) => CategoryProvider()),
         ChangeNotifierProvider(create: (context) => CategoryGoodsListProvider()),
         ChangeNotifierProvider(create: (context) => DetailsInfoProvide()),
+        ChangeNotifierProvider(create: (context) => CartProvide()),
       ],
       child: MyApp(),
     )

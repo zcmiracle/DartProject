@@ -4,14 +4,16 @@ import '../../provide/current_index_provide.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../config/index.dart';
-import '../../routers/application.dart';
+import '../../provide/cart_provide.dart';
 
 class DetailBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-   var goodsInfo = Provider.of<DetailsInfoProvide>(context).goodsInfo.data
+   var goodsInfo = Provider.of<DetailsInfoProvide>(context, listen: false)
+       .goodsInfo.data
        .goodInfo;
+
    var goodsID = goodsInfo.goodsId;
    var goodsName = goodsInfo.goodsName;
    var count = 1;
@@ -29,8 +31,7 @@ class DetailBottom extends StatelessWidget {
             children: <Widget>[
               InkWell(
                 onTap: () {
-                  Provider.of<CurrentIndexProvide>(context, listen: false)
-                      .changeIndex(2);
+                  Provider.of<CurrentIndexProvide>(context, listen: false).changeIndex(2);
                   Navigator.pop(context);
                 },
                 child: Container(
@@ -39,30 +40,42 @@ class DetailBottom extends StatelessWidget {
                   child: Icon(Icons.shopping_cart, size: 35, color: Colors.red,),
                 ),
               ),
-              Positioned(
-                top: 0,
-                right: 10,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
-                  decoration: BoxDecoration(
-                    color: ZCColor.primaryColor,
-                    border: Border.all(width: 2, color: Colors.white),
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  child: Text(
-                    "4",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: ScreenUtil().setSp(22),
+
+              ///
+              Consumer<CartProvide>(
+                builder: (BuildContext context, CartProvide cartProvider, Widget child) {
+                  /// 购物车商品总数
+                  int goodsCount = cartProvider.allGoodsCount;
+                  return Positioned(
+                    top: 0,
+                    right: 10,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(6, 3, 6, 3),
+                      decoration: BoxDecoration(
+                        color: ZCColor.primaryColor,
+                        border: Border.all(width: 2, color: Colors.white),
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      child: Text(
+                        "${goodsCount}",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: ScreenUtil().setSp(22),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),
 
           /// 添加到购物车
           InkWell(
+            onTap: () async {
+              // 添加到购物车
+              await Provider.of<CartProvide>(context, listen: false).save(goodsID, goodsName, count, price, images);
+            },
             child: Container(
               alignment: Alignment.center,
               width: ScreenUtil().setWidth(320),
@@ -76,9 +89,6 @@ class DetailBottom extends StatelessWidget {
                 ),
               ),
             ),
-            onTap: () {
-
-            },
           ),
 
           /// 马上购买

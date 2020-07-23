@@ -18,5 +18,11 @@ class ZCString {
   static const String addToShoppingCar = "加入购物车";
   static const String buyGoodsText = "马上购买";
 
+  static const String cartPageTitle = "购物车";
+
+  static const String allPriceTitle = "合计";
+
+  static const String allPriceBannerTitle = "满10元免配送费,预购免配送费";
+
 
 }
