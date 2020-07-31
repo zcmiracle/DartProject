@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 /// 评星组件
 class ZCStarRating extends StatefulWidget {
 
+  // 等级
   final double rating;
   final double maxRating;
   final int count;

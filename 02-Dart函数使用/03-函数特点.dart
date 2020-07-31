@@ -19,6 +19,8 @@ main(List<String> args) {
     print("箭头函数调用")
   });
 
+  test(() => print("箭头函数被调用"));
+
 }
 
 // 函数可以作为另外一个函数的参数

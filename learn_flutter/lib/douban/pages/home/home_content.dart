@@ -40,7 +40,7 @@ class _ZCHomeContentState extends State<ZCHomeContent> {
 //    });
 
      /// 获取电影列表数据
-     HomeRequest.requestMovieList(0).then((res) {
+     HomeRequest.requestMovieList(25).then((res) {
        setState(() {
          movies.addAll(res);
        });

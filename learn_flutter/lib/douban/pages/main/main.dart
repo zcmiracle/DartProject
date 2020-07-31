@@ -31,9 +31,4 @@ class _ZCMainPageState extends State<ZCMainPage> {
       ),
     );
   }
-
-
-
-
-
 }
