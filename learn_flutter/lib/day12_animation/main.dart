@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
+import 'pages/modal_page.dart';
+import 'pages/image_detail.dart';
 
 main() => runApp(MyApp());
 
@@ -17,30 +20,64 @@ class ZCHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("动画的学习"),
+        title: Text("首页"),
       ),
-      body: ZCHomeContent(),
+      body: Center(
+        child: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 9,
+            childAspectRatio: 16/9,
+          ),
+          children: List.generate(20, (index) {
+            final imageURL = "https://picsum.photos/500/500?random=$index";
+            return GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(PageRouteBuilder(
+                  pageBuilder: (ctx, animation1, animation2) {
+                    return FadeTransition(opacity: animation1, child:
+                    ZCImageDetailPage(imageURL),);
+                  }
+                ));
+              },
+              child: Hero(
+                tag: imageURL,
+                child: Image.network(
+                  imageURL,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          }),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.pool),
+        onPressed: () {
+//          Navigator.of(context).push(
+//            MaterialPageRoute(
+//              builder: (ctx) {
+//                return ZCModalPage();
+//              },
+//                /// iOS modal的形式从底部弹出
+//              fullscreenDialog: true
+//            ),
+//          );
+          Navigator.of(context).push(PageRouteBuilder(
+            transitionDuration: Duration(seconds: 3),
+            pageBuilder: (ctx, animation1, animation2) {
+              return FadeTransition(
+                opacity: animation1,
+                child: ZCModalPage(),
+              );
+            }
+          ));
+
+        },
+      ),
     );
   }
 }
 
-
-/**
- *  Animation: 抽象类
- *    监听动画值的改变
- *    监听动画状态的改变
- *    value
- *    status
- *    抽象类 不能实例化，只能用子类 可以用工厂构造方法进行实例化
- *  AnimationController 继承自Animation
- *    vsync：同步信号 一秒钟刷新多少次
- */
-class ZCHomeContent extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-
-    AnimationController
-    return Container();
-  }
-}
 
