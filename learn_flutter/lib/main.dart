@@ -84,6 +84,12 @@ class ZCButton extends StatelessWidget {
   }
 }
 
+/// 1、自己写Widget
+/// 2、某些Widget中会创建RenderObject
+/// 3、每一个Widget都会创建一个Element对象
+/// 4、mount方法（系统调用）：
+
+
 
 
 

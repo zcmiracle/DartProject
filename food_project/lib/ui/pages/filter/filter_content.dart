@@ -19,7 +19,7 @@ class ZCFilterContent extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20.px),
       alignment: Alignment.center,
-      child: Text("展示你的选择", style: Theme.of(context).textTheme.display3
+      child: Text("展示你的选择", style: Theme.of(context).textTheme.bodyText2
           .copyWith(fontWeight: FontWeight.bold),),
     );
   }

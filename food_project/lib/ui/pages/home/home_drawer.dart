@@ -30,14 +30,14 @@ class ZCHomeDrawer extends StatelessWidget {
       color: Colors.orange,
       margin: EdgeInsets.only(bottom: 20.px),
       alignment: Alignment(0, 0.5),
-      child: Text("开始动手", style: Theme.of(context).textTheme.display4),
+            child: Text("开始动手", style: Theme.of(context).textTheme.bodyText2),
     );
   }
 
   Widget buildListTile(BuildContext context, Widget icon, String title, Function handler) {
     return ListTile(
       leading: icon,
-      title: Text(title, style: Theme.of(context).textTheme.display2,),
+            title: Text(title, style: Theme.of(context).textTheme.bodyText1),
       onTap: handler,
     );
   }

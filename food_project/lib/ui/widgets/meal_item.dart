@@ -58,7 +58,8 @@ class ZCMealItem extends StatelessWidget {
             ),
             child: Text(
               _meal.title,
-              style: Theme.of(context).textTheme.display3.copyWith(color: Colors.white),),
+              style: Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.white),),
+              // style: Theme.of(context).textTheme.display3.copyWith(color: Colors.white),),
           ),
         ),
       ],

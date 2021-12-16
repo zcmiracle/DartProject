@@ -28,7 +28,8 @@ class ZCHomeCategoryItem extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           _category.title,
-          style: Theme.of(context).textTheme.display2.copyWith(
+          // style: Theme.of(context).textTheme.display2.copyWith(
+            style: Theme.of(context).textTheme.bodyText2.copyWith(
             fontWeight: FontWeight.bold,
           ),
         ),

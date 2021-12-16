@@ -88,7 +88,7 @@ class ZCDetailContent extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10.px),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.display3.copyWith(fontWeight: FontWeight.bold),
+        // style: Theme.of(context).textTheme.display3.copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }
